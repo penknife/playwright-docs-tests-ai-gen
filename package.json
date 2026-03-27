@@ -1,0 +1,23 @@
+{
+  "name": "playwright-docs-tests-ai-gen",
+  "version": "1.0.0",
+  "description": "al generated tests for https://playwright.dev/ documentation",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penknife/playwright-docs-tests-ai-gen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/penknife/playwright-docs-tests-ai-gen/issues"
+  },
+  "homepage": "https://github.com/penknife/playwright-docs-tests-ai-gen#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}
