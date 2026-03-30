@@ -30,9 +30,7 @@ test.describe('Homepage Navigation', () => {
       await homePage.goto();
       
       // Use top navigation component to switch languages
-      await homePage.topNav.switchLanguage({ 
-        language: languageTest.language as 'Node.js' | 'Python' | 'Java' | '.NET'
-      });
+      await homePage.topNav.switchLanguage(languageTest.language as 'Node.js' | 'Python' | 'Java' | '.NET');
       
       // Verify correct URL navigation
       await expect(homePage.page, `${languageTest.language} should navigate to correct docs`).toHaveURL(languageTest.expectedUrl);
