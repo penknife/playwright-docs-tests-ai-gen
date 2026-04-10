@@ -5,49 +5,62 @@ import { test, expect } from '../../fixtures/search.fixture';
 
 test.describe('Search Modal Functionality', () => {
   test('should open and close search modal correctly', async ({ searchFromHomepage }) => {
-    // Open search modal using component method
-    await searchFromHomepage.search.open();
-    
-    // Verify modal state using component verification
-    await searchFromHomepage.search.verifyModalOpen();
-    
-    // Verify initial state shows no recent searches
-    await searchFromHomepage.search.verifyInitialState();
-    
-    // Close modal using Escape and verify it closes
-    await searchFromHomepage.search.close();
-    await searchFromHomepage.search.verifyModalClosed();
+    await test.step('Open search modal', async () => {
+      await searchFromHomepage.search.open();
+    });
+
+    await test.step('Verify modal is open with initial state', async () => {
+      await searchFromHomepage.search.verifyModalOpen();
+      await searchFromHomepage.search.verifyInitialState();
+    });
+
+    await test.step('Close modal and verify it is closed', async () => {
+      await searchFromHomepage.search.close();
+      await searchFromHomepage.search.verifyModalClosed();
+    });
   });
 
   test('should open search modal with keyboard shortcut', async ({ searchFromHomepage }) => {
-    // Open using keyboard shortcut (Cmd+K/Ctrl+K)
-    await searchFromHomepage.search.openWithKeyboard();
-    
-    // Verify modal opens and input is focused
-    await searchFromHomepage.search.verifyModalOpen();
-    await searchFromHomepage.search.verifyInputFocused();
-    
-    // Close modal
-    await searchFromHomepage.search.close();
+    await test.step('Open modal with keyboard shortcut (Cmd+K / Ctrl+K)', async () => {
+      await searchFromHomepage.search.openWithKeyboard();
+    });
+
+    await test.step('Verify modal is open and input is focused', async () => {
+      await searchFromHomepage.search.verifyModalOpen();
+      await searchFromHomepage.search.verifyInputFocused();
+    });
+
+    await test.step('Close modal', async () => {
+      await searchFromHomepage.search.close();
+    });
   });
 
   test('should display keyboard shortcuts and instructions', async ({ searchFromHomepage }) => {
-    await searchFromHomepage.search.open();
-    
-    // Verify keyboard shortcuts are displayed using component method
-    await searchFromHomepage.search.verifyKeyboardShortcuts();
-    
-    await searchFromHomepage.search.close();
+    await test.step('Open search modal', async () => {
+      await searchFromHomepage.search.open();
+    });
+
+    await test.step('Verify keyboard shortcuts are displayed', async () => {
+      await searchFromHomepage.search.verifyKeyboardShortcuts();
+    });
+
+    await test.step('Close modal', async () => {
+      await searchFromHomepage.search.close();
+    });
   });
 
   test('should handle modal behavior from docs page', async ({ searchFromDocs }) => {
-    // Test search modal from docs page context
-    await searchFromDocs.search.open();
-    await searchFromDocs.search.verifyModalOpen();
-    
-    // Verify consistent behavior across different page contexts
-    await searchFromDocs.search.verifyInitialState();
-    
-    await searchFromDocs.search.close();
+    await test.step('Open search modal from docs page', async () => {
+      await searchFromDocs.search.open();
+    });
+
+    await test.step('Verify modal behavior is consistent on docs page', async () => {
+      await searchFromDocs.search.verifyModalOpen();
+      await searchFromDocs.search.verifyInitialState();
+    });
+
+    await test.step('Close modal', async () => {
+      await searchFromDocs.search.close();
+    });
   });
 });

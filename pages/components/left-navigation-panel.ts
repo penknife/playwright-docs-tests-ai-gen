@@ -46,22 +46,34 @@ export class LeftNavigationPanel {
     await this.expandSection(options.section);
     
     if (options.subsection) {
-      await this.page.getByRole('link', { name: options.subsection, exact: true }).click();
+      // Scope the search to the section's list item to avoid cross-section matches
+      const sectionContainer = this.sidebar.locator('> ul > li').filter({ 
+        has: this.page.getByRole('button', { name: options.section, exact: true })
+      });
+      
+      const subsectionLink = sectionContainer.getByRole('link', { name: options.subsection, exact: true });
+      await subsectionLink.click();
     } else {
       await this.page.getByRole('link', { name: options.section }).click();
     }
   }
 
   async verifySection(section: NavigationSection): Promise<void> {
-    const sectionButton = this.page.getByRole('button', { name: section.name });
+    const sectionButton = this.sidebar.getByRole('button', { name: section.name });
     await expect(sectionButton, `${section.name} section should be visible`).toBeVisible();
 
     if (section.subsections) {
       // Expand section to check subsections
       await this.expandSection(section.name);
       
+      // Scope the search to the section's list item to avoid cross-section matches
+      // Find the top-level list item that contains the section button
+      const sectionContainer = this.sidebar.locator('> ul > li').filter({ 
+        has: this.page.getByRole('button', { name: section.name, exact: true })
+      });
+      
       for (const subsection of section.subsections) {
-        const subsectionLink = this.page.getByRole('link', { name: subsection });
+        const subsectionLink = sectionContainer.getByRole('link', { name: subsection, exact: true });
         await expect(subsectionLink, `${subsection} subsection should be visible`).toBeVisible();
       }
     }
@@ -79,8 +91,8 @@ export class LeftNavigationPanel {
   }
 
   async verifyCurrentHighlight(linkName: string): Promise<void> {
-    // This would check for active/current state styling if available
-    const currentLink = this.page.getByRole('link', { name: linkName });
+    // Scope to sidebar to avoid matching pagination or other page links with the same text
+    const currentLink = this.sidebar.getByRole('link', { name: linkName, exact: true });
     await expect(currentLink, `${linkName} should be highlighted as current page`).toBeVisible();
   }
 

@@ -19,44 +19,42 @@ const LANGUAGE_CONFIGS: LanguageTestConfig[] = [
 test.describe('Language Content Consistency', () => {
   test('should have equivalent documentation structure for all languages', async ({ languagePage }) => {
     for (const config of LANGUAGE_CONFIGS) {
-      // Navigate to each language's documentation
-      await languagePage.page.goto(config.introUrl);
-      
-      // Verify consistent navigation structure using component methods
-      await languagePage.topNav.verifyNavigationItems(['Docs', 'API', 'Community']);
-      
-      // Verify Getting Started section exists in sidebar
-      await languagePage.leftNav.verifySection({ name: 'Getting Started' });
+      await test.step(`Verify docs structure for ${config.name}`, async () => {
+        await languagePage.page.goto(config.introUrl);
+        await languagePage.topNav.verifyNavigationItems(['Docs', 'API', 'Community']);
+        await languagePage.leftNav.verifySection({ name: 'Getting Started' });
+      });
     }
   });
 
   test('should maintain search functionality across all languages', async ({ languagePage }) => {
     for (const config of LANGUAGE_CONFIGS) {
-      await languagePage.page.goto(config.introUrl);
-      
-      // Test search works in each language using component method
-      await languagePage.search.open();
-      await languagePage.search.verifyModalOpen();
-      await languagePage.search.close();
+      await test.step(`Verify search opens and closes on ${config.name} docs`, async () => {
+        await languagePage.page.goto(config.introUrl);
+        await languagePage.search.open();
+        await languagePage.search.verifyModalOpen();
+        await languagePage.search.close();
+      });
     }
   });
 
   test('should persist language selection during docs navigation', async ({ languagePage }) => {
-    // Start with Python documentation
-    await languagePage.page.goto('https://playwright.dev/python/docs/intro');
-    
-    // Navigate to another section within Python docs
-    await languagePage.leftNav.navigateTo({
-      section: 'Getting Started',
-      subsection: 'Writing tests'
+    await test.step('Navigate to Python intro page', async () => {
+      await languagePage.page.goto('https://playwright.dev/python/docs/intro');
     });
-    
-    // Verify Python language is still selected
-    await expect(languagePage.page.getByRole('button', { name: 'Python' }), 
-      'Language should persist during navigation').toBeVisible();
-    
-    // Verify URL maintains language prefix
-    await expect(languagePage.page, 'URL should maintain Python prefix').toHaveURL('/python/docs/writing-tests');
+
+    await test.step('Navigate to Writing tests within Python docs', async () => {
+      await languagePage.leftNav.navigateTo({
+        section: 'Getting Started',
+        subsection: 'Writing tests'
+      });
+    });
+
+    await test.step('Verify Python language and URL prefix are preserved', async () => {
+      await expect(languagePage.page.getByRole('button', { name: 'Python' }),
+        'Language should persist during navigation').toBeVisible();
+      await expect(languagePage.page, 'URL should maintain Python prefix').toHaveURL('/python/docs/writing-tests');
+    });
   });
 
   test('should have language-specific URLs throughout navigation', async ({ languagePage }) => {
@@ -65,9 +63,11 @@ test.describe('Language Content Consistency', () => {
       expectedUrlPattern: new RegExp(`${config.urlPrefix}/docs`)
     }));
 
-    for (const test of languageUrlTests) {
-      await languagePage.page.goto(test.introUrl);
-      await expect(languagePage.page, 'URL should contain language prefix').toHaveURL(test.expectedUrlPattern);
+    for (const urlTest of languageUrlTests) {
+      await test.step(`Verify URL contains language prefix for ${urlTest.introUrl}`, async () => {
+        await languagePage.page.goto(urlTest.introUrl);
+        await expect(languagePage.page, 'URL should contain language prefix').toHaveURL(urlTest.expectedUrlPattern);
+      });
     }
   });
 });

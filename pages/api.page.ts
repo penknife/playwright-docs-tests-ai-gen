@@ -90,13 +90,16 @@ export class ApiPage {
     
     // Verify methods are listed
     for (const method of apiClass.methods) {
-      await this.verifyMethodDocumentation(method);
+      await this.verifyMethodDocumentation(method, apiClass.name);
     }
   }
 
-  async verifyMethodDocumentation(method: APIMethod): Promise<void> {
-    // Verify method name appears in the page
-    const methodHeading = this.page.getByRole('heading', { name: new RegExp(method.name, 'i') });
+  async verifyMethodDocumentation(method: APIMethod, className?: string): Promise<void> {
+    // Build ID prefix: docs generate heading IDs as <classname>-<methodname>
+    const idPrefix = className ? className.toLowerCase() : 'page';
+    // Convert camelCase method names to kebab-case for URL anchors
+    const kebabCaseMethodName = method.name.replace(/([A-Z])/g, '-$1').toLowerCase();
+    const methodHeading = this.page.locator(`#${idPrefix}-${kebabCaseMethodName}`);
     await expect(methodHeading, `Method ${method.name} should be documented`).toBeVisible();
     
     // Verify method description
@@ -221,17 +224,17 @@ export class ApiPage {
       methods: [
         {
           name: 'chromium',
-          description: 'Returns the browser instance for Chromium',
+          description: 'This object can be used to launch or connect to Chromium, returning instances of Browser',
           returnType: 'BrowserType'
         },
         {
           name: 'firefox',
-          description: 'Returns the browser instance for Firefox', 
+          description: 'This object can be used to launch or connect to Firefox, returning instances of Browser', 
           returnType: 'BrowserType'
         },
         {
           name: 'webkit',
-          description: 'Returns the browser instance for WebKit',
+          description: 'This object can be used to launch or connect to WebKit, returning instances of Browser',
           returnType: 'BrowserType'
         }
       ]
@@ -245,20 +248,20 @@ export class ApiPage {
       methods: [
         {
           name: 'goto',
-          description: 'Navigate to URL',
+          description: 'Returns the main resource response. In case of multiple redirects, the navigation will resolve with the first non-redirect response',
           parameters: ['url', 'options'],
           returnType: 'Promise<Response>'
         },
         {
           name: 'click',
-          description: 'Click an element',
+          description: 'DiscouragedUse locator-based locator.click() instead',
           parameters: ['selector', 'options'],
           returnType: 'Promise<void>'
         },
         {
           name: 'fill',
-          description: 'Fill input field',
-          parameters: ['selector', 'value', 'options'],
+          description: 'DiscouragedUse locator-based locator.fill() instead',
+          parameters: ['value', 'options'],
           returnType: 'Promise<void>'
         }
       ]

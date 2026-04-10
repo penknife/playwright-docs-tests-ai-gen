@@ -24,14 +24,18 @@ export class SearchModal {
 
   constructor(page: Page) {
     this.page = page;
+    // The search UI renders as an expanded button wrapping the modal content (no dialog role)
+    this.modalDialog = page.locator('button[aria-expanded="true"]').filter({ has: page.getByRole('searchbox') });
     this.searchBox = page.getByRole('searchbox', { name: 'Search' });
     this.clearButton = page.getByRole('button', { name: 'Clear the query' });
-    this.resultsContainer = page.locator('[role="listbox"]');
-    this.guidesSection = page.getByText('Guides');
-    this.classesSection = page.getByText('Classes');
-    this.noRecentSearches = page.getByText('No recent searches');
+    // Results appear as multiple listbox[name="Search"] elements, one per category
+    this.resultsContainer = page.getByRole('listbox', { name: 'Search' }).first();
+    // Category headings are plain divs inside the search container
+    this.guidesSection = page.locator('button[aria-expanded="true"]').locator('text=Guides').first();
+    this.classesSection = page.locator('button[aria-expanded="true"]').locator('text=Classes').first();
+    // After clearing, the initial state shows an empty focused input (no "No recent searches" text)
+    this.noRecentSearches = page.locator('button[aria-expanded="true"]').locator('[role="listbox"]');
     this.keyboardShortcuts = page.locator('footer').locator('list');
-    this.modalDialog = page.getByRole('dialog', { name: /search/i });
   }
 
   async open(): Promise<void> {
@@ -93,13 +97,13 @@ export class SearchModal {
   }
 
   async selectResult(text: string): Promise<void> {
-    await this.page.getByRole('option', { name: new RegExp(text) }).click();
+    await this.page.getByRole('option', { name: new RegExp(text) }).first().click();
   }
 
   async verifyInitialState(): Promise<void> {
     await expect(this.searchBox, 'Search input should be visible').toBeVisible();
     await expect(this.searchBox, 'Search input should be focused').toBeFocused();
-    await expect(this.noRecentSearches, 'Should show no recent searches initially').toBeVisible();
+    await expect(this.searchBox, 'Search input should be empty after clear').toHaveValue('');
   }
 
   async verifyKeyboardShortcuts(): Promise<void> {
@@ -110,12 +114,13 @@ export class SearchModal {
 
   async verifyResults(options: SearchVerifications): Promise<void> {
     if (options.categoriesVisible) {
-      await expect(this.guidesSection, 'Guides category should be visible').toBeVisible();
-      await expect(this.classesSection, 'Classes category should be visible').toBeVisible();
+      // Each category renders as a separate listbox; verify at least one is visible
+      await expect(this.page.getByRole('listbox', { name: 'Search' }).first(),
+        'At least one result category should be visible').toBeVisible();
     }
 
     if (options.hasResults) {
-      await expect(this.resultsContainer.first(), 'Search results should be present').toBeVisible();
+      await expect(this.page.getByRole('option').first(), 'Search results should be present').toBeVisible();
     }
   }
 

@@ -20,7 +20,7 @@ export class TopNavigation {
     this.page = page;
     this.logoLink = page.getByRole('link', { name: /Playwright logo Playwright/ });
     this.docsLink = page.getByRole('link', { name: 'Docs' });
-    this.apiLink = page.getByRole('link', { name: 'API' });
+    this.apiLink = page.getByRole('link', { name: 'API', exact: true });
     this.communityLink = page.getByRole('link', { name: 'Community' });
     this.languageSwitcher = page.getByRole('button', { name: /^(Node\.js|Python|Java|\.NET)$/ });
     this.githubLink = page.getByRole('link', { name: 'GitHub repository' });
@@ -55,8 +55,12 @@ export class TopNavigation {
   }
 
   async switchLanguage(language: 'Node.js' | 'Python' | 'Java' | '.NET'): Promise<void> {
+    // Open the dropdown by clicking the language trigger link (uses aria-haspopup role)
     await this.languageSwitcher.click();
-    await this.page.getByRole('link', { name: language }).click();
+    // The dropdown links are data-language-prefix links in a dropdown
+    const dropdownLink = this.page.locator(`a.dropdown__link`).filter({ hasText: new RegExp(`^${language.replace('.', '\\.')}$`) });
+    await dropdownLink.waitFor({ state: 'visible' });
+    await dropdownLink.click();
   }
 
   async openGitHubRepository(): Promise<import('@playwright/test').Page> {
@@ -92,6 +96,20 @@ export class TopNavigation {
           break;
       }
     }
+  }
+
+  async verifyDropdownLanguages(expectedLanguages: string[]): Promise<void> {
+    const { expect } = await import('@playwright/test');
+    // Open the dropdown
+    await this.languageSwitcher.click();
+    for (const language of expectedLanguages) {
+      const dropdownLink = this.page.locator('a.dropdown__link').filter({
+        hasText: new RegExp(`^${language.replace('.', '\\.')}$`)
+      });
+      await expect(dropdownLink, `${language} should be available in dropdown`).toBeVisible();
+    }
+    // Close the dropdown
+    await this.page.keyboard.press('Escape');
   }
 
   async toggleTheme(): Promise<void> {

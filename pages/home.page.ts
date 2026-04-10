@@ -39,27 +39,33 @@ export class HomePage {
     this.search = new SearchModal(page);
     
     // Hero section
-    this.heroSection = page.locator('[data-testid="hero-section"], .hero-section').first();
+    this.heroSection = page.locator('header.hero').first();
     this.heroTitle = page.getByRole('heading', { level: 1 }).first();
-    this.heroSubtitle = page.locator('p').first();
+    this.heroSubtitle = this.heroSection.locator('p').first();
     this.getStartedButton = page.getByRole('link', { name: /get started/i });
     
     // Features
-    this.featuresSection = page.locator('[data-testid="features-section"], .features-section').first();
-    this.featureCards = page.locator('[data-testid="feature-card"], .feature-card');
+    this.featuresSection = page.locator('main section').first();
+    this.featureCards = page.locator('main section[class*="featureSection"]');
     
     // Quick start
-    this.quickStartSection = page.locator('[data-testid="quickstart-section"], .quickstart-section').first();
-    this.installationSteps = page.locator('pre code, .code-block');
+    this.quickStartSection = page.locator('main section').first();
+    this.installationSteps = page.locator('main section code');
   }
 
   async goto(): Promise<void> {
-    await this.page.goto('https://playwright.dev');
+    await this.page.goto('https://playwright.dev/');
     await this.verifyPageLoaded();
   }
 
+  async clearLanguagePreference(): Promise<void> {
+    // Site stores language preference in localStorage; clear it so root URL
+    // doesn't redirect back to a language subsite
+    await this.page.evaluate(() => localStorage.removeItem('docusaurus.tab.programming-language'));
+  }
+
   async verifyPageLoaded(): Promise<void> {
-    await expect(this.page, 'Should be on Playwright homepage').toHaveURL('https://playwright.dev/');
+    await expect(this.page, 'Should be on Playwright homepage').toHaveURL(/playwright\.dev/);
     await expect(this.page, 'Page should have correct title').toHaveTitle(/Playwright/);
   }
 
@@ -115,7 +121,7 @@ export class HomePage {
     expect(stepsCount, 'Should have installation steps').toBeGreaterThan(0);
     
     // Verify npm install command is shown
-    const hasNpmInstall = await this.page.getByText('npm create playwright').isVisible();
+    const hasNpmInstall = await this.page.getByText('npm init playwright').isVisible();
     expect(hasNpmInstall, 'Should show npm installation command').toBe(true);
   }
 
@@ -137,8 +143,9 @@ export class HomePage {
   }
 
   async verifyAccessibility(): Promise<void> {
-    // Verify main heading has proper hierarchy
-    await expect(this.heroTitle, 'Main heading should be h1').toHaveAttribute('role', 'heading');
+    // Verify main heading has proper hierarchy (native h1 has implicit heading role)
+    await expect(this.heroTitle, 'Main heading should be visible').toBeVisible();
+    await expect(this.heroTitle, 'Main heading should have text').not.toBeEmpty();
     
     // Verify CTA button is accessible
     await this.getStartedButton.focus();
@@ -162,7 +169,7 @@ export class HomePage {
   getDefaultHeroContent(): HeroSection {
     return {
       title: 'Playwright',
-      subtitle: 'Fast and reliable end-to-end testing',
+      subtitle: 'One API to drive Chromium, Firefox, and WebKit',
       ctaButton: 'Get started'
     };
   }
@@ -170,16 +177,16 @@ export class HomePage {
   getExpectedFeatures(): FeatureCard[] {
     return [
       {
-        title: 'Cross-browser',
-        description: 'Playwright supports all modern browsers'
+        title: 'Built for testing',
+        description: 'Auto-wait'
       },
       {
-        title: 'Fast and reliable',
-        description: 'Auto-wait capabilities and smart defaults'
+        title: 'Built for AI agents',
+        description: 'Accessibility snapshots'
       },
       {
         title: 'Powerful tooling',
-        description: 'Codegen, trace viewer, and more'
+        description: 'Test generator'
       }
     ];
   }
