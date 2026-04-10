@@ -1,0 +1,633 @@
+- generic [ref=e2]:
+  - region "Skip to main content":
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#__docusaurus_skipToContent_fallback"
+  - navigation "Main" [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Playwright logo Playwright" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Playwright logo" [ref=e9]
+          - generic [ref=e10]: Playwright
+        - link "Docs" [ref=e11] [cursor=pointer]:
+          - /url: /docs/intro
+        - link "API" [ref=e12] [cursor=pointer]:
+          - /url: /docs/api/class-playwright
+        - button "Node.js" [ref=e14] [cursor=pointer]
+        - link "Community" [ref=e15] [cursor=pointer]:
+          - /url: /community/welcome
+      - generic [ref=e16]:
+        - link "GitHub repository" [ref=e17] [cursor=pointer]:
+          - /url: https://github.com/microsoft/playwright
+        - link "Discord server" [ref=e18] [cursor=pointer]:
+          - /url: https://aka.ms/playwright/discord
+        - button "Switch between dark and light mode (currently system mode)" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+        - button "Search (Command+K)" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]:
+            - img [ref=e26]
+            - generic [ref=e28]: Search
+          - generic [ref=e29]:
+            - generic [ref=e30]: ⌘
+            - generic [ref=e31]: K
+  - generic [ref=e34]:
+    - complementary [ref=e35]:
+      - navigation "Docs sidebar" [ref=e38]:
+        - list [ref=e39]:
+          - listitem [ref=e40]:
+            - button "API reference" [expanded] [ref=e42] [cursor=pointer]
+            - list [ref=e43]:
+              - listitem [ref=e44]:
+                - link "Playwright Test" [ref=e45] [cursor=pointer]:
+                  - /url: /docs/api/class-test
+              - listitem [ref=e46]:
+                - link "Playwright Library" [ref=e47] [cursor=pointer]:
+                  - /url: /docs/api/class-playwright
+              - listitem [ref=e48]:
+                - button "Classes" [expanded] [ref=e50] [cursor=pointer]
+                - list [ref=e51]:
+                  - listitem [ref=e52]:
+                    - link "APIRequest" [ref=e53] [cursor=pointer]:
+                      - /url: /docs/api/class-apirequest
+                  - listitem [ref=e54]:
+                    - link "APIRequestContext" [ref=e55] [cursor=pointer]:
+                      - /url: /docs/api/class-apirequestcontext
+                  - listitem [ref=e56]:
+                    - link "APIResponse" [ref=e57] [cursor=pointer]:
+                      - /url: /docs/api/class-apiresponse
+                  - listitem [ref=e58]:
+                    - link "Browser" [ref=e59] [cursor=pointer]:
+                      - /url: /docs/api/class-browser
+                  - listitem [ref=e60]:
+                    - link "BrowserContext" [ref=e61] [cursor=pointer]:
+                      - /url: /docs/api/class-browsercontext
+                  - listitem [ref=e62]:
+                    - link "BrowserServer" [ref=e63] [cursor=pointer]:
+                      - /url: /docs/api/class-browserserver
+                  - listitem [ref=e64]:
+                    - link "BrowserType" [ref=e65] [cursor=pointer]:
+                      - /url: /docs/api/class-browsertype
+                  - listitem [ref=e66]:
+                    - link "CDPSession" [ref=e67] [cursor=pointer]:
+                      - /url: /docs/api/class-cdpsession
+                  - listitem [ref=e68]:
+                    - link "Clock" [ref=e69] [cursor=pointer]:
+                      - /url: /docs/api/class-clock
+                  - listitem [ref=e70]:
+                    - link "ConsoleMessage" [ref=e71] [cursor=pointer]:
+                      - /url: /docs/api/class-consolemessage
+                  - listitem [ref=e72]:
+                    - link "Coverage" [ref=e73] [cursor=pointer]:
+                      - /url: /docs/api/class-coverage
+                  - listitem [ref=e74]:
+                    - link "Dialog" [ref=e75] [cursor=pointer]:
+                      - /url: /docs/api/class-dialog
+                  - listitem [ref=e76]:
+                    - link "Download" [ref=e77] [cursor=pointer]:
+                      - /url: /docs/api/class-download
+                  - listitem [ref=e78]:
+                    - link "ElementHandle" [ref=e79] [cursor=pointer]:
+                      - /url: /docs/api/class-elementhandle
+                  - listitem [ref=e80]:
+                    - link "FileChooser" [ref=e81] [cursor=pointer]:
+                      - /url: /docs/api/class-filechooser
+                  - listitem [ref=e82]:
+                    - link "Frame" [ref=e83] [cursor=pointer]:
+                      - /url: /docs/api/class-frame
+                  - listitem [ref=e84]:
+                    - link "FrameLocator" [ref=e85] [cursor=pointer]:
+                      - /url: /docs/api/class-framelocator
+                  - listitem [ref=e86]:
+                    - link "JSHandle" [ref=e87] [cursor=pointer]:
+                      - /url: /docs/api/class-jshandle
+                  - listitem [ref=e88]:
+                    - link "Keyboard" [ref=e89] [cursor=pointer]:
+                      - /url: /docs/api/class-keyboard
+                  - listitem [ref=e90]:
+                    - link "Locator" [ref=e91] [cursor=pointer]:
+                      - /url: /docs/api/class-locator
+                  - listitem [ref=e92]:
+                    - link "Logger" [ref=e93] [cursor=pointer]:
+                      - /url: /docs/api/class-logger
+                  - listitem [ref=e94]:
+                    - link "Mouse" [ref=e95] [cursor=pointer]:
+                      - /url: /docs/api/class-mouse
+                  - listitem [ref=e96]:
+                    - link "Page" [ref=e97] [cursor=pointer]:
+                      - /url: /docs/api/class-page
+                  - listitem [ref=e98]:
+                    - link "Request" [ref=e99] [cursor=pointer]:
+                      - /url: /docs/api/class-request
+                  - listitem [ref=e100]:
+                    - link "Response" [ref=e101] [cursor=pointer]:
+                      - /url: /docs/api/class-response
+                  - listitem [ref=e102]:
+                    - link "Route" [ref=e103] [cursor=pointer]:
+                      - /url: /docs/api/class-route
+                  - listitem [ref=e104]:
+                    - link "Selectors" [ref=e105] [cursor=pointer]:
+                      - /url: /docs/api/class-selectors
+                  - listitem [ref=e106]:
+                    - link "TimeoutError" [ref=e107] [cursor=pointer]:
+                      - /url: /docs/api/class-timeouterror
+                  - listitem [ref=e108]:
+                    - link "Touchscreen" [ref=e109] [cursor=pointer]:
+                      - /url: /docs/api/class-touchscreen
+                  - listitem [ref=e110]:
+                    - link "Tracing" [ref=e111] [cursor=pointer]:
+                      - /url: /docs/api/class-tracing
+                  - listitem [ref=e112]:
+                    - link "Video" [ref=e113] [cursor=pointer]:
+                      - /url: /docs/api/class-video
+                  - listitem [ref=e114]:
+                    - link "WebError" [ref=e115] [cursor=pointer]:
+                      - /url: /docs/api/class-weberror
+                  - listitem [ref=e116]:
+                    - link "WebSocket" [ref=e117] [cursor=pointer]:
+                      - /url: /docs/api/class-websocket
+                  - listitem [ref=e118]:
+                    - link "WebSocketRoute" [ref=e119] [cursor=pointer]:
+                      - /url: /docs/api/class-websocketroute
+                  - listitem [ref=e120]:
+                    - link "Worker" [ref=e121] [cursor=pointer]:
+                      - /url: /docs/api/class-worker
+              - listitem [ref=e122]:
+                - button "Assertions" [expanded] [ref=e124] [cursor=pointer]
+                - list [ref=e125]:
+                  - listitem [ref=e126]:
+                    - link "APIResponseAssertions" [ref=e127] [cursor=pointer]:
+                      - /url: /docs/api/class-apiresponseassertions
+                  - listitem [ref=e128]:
+                    - link "GenericAssertions" [ref=e129] [cursor=pointer]:
+                      - /url: /docs/api/class-genericassertions
+                  - listitem [ref=e130]:
+                    - link "LocatorAssertions" [ref=e131] [cursor=pointer]:
+                      - /url: /docs/api/class-locatorassertions
+                  - listitem [ref=e132]:
+                    - link "PageAssertions" [ref=e133] [cursor=pointer]:
+                      - /url: /docs/api/class-pageassertions
+                  - listitem [ref=e134]:
+                    - link "SnapshotAssertions" [ref=e135] [cursor=pointer]:
+                      - /url: /docs/api/class-snapshotassertions
+              - listitem [ref=e136]:
+                - button "Test Runner" [expanded] [ref=e138] [cursor=pointer]
+                - list [ref=e139]:
+                  - listitem [ref=e140]:
+                    - link "Fixtures" [ref=e141] [cursor=pointer]:
+                      - /url: /docs/api/class-fixtures
+                  - listitem [ref=e142]:
+                    - link "FullConfig" [ref=e143] [cursor=pointer]:
+                      - /url: /docs/api/class-fullconfig
+                  - listitem [ref=e144]:
+                    - link "FullProject" [ref=e145] [cursor=pointer]:
+                      - /url: /docs/api/class-fullproject
+                  - listitem [ref=e146]:
+                    - link "Location" [ref=e147] [cursor=pointer]:
+                      - /url: /docs/api/class-location
+                  - listitem [ref=e148]:
+                    - link "Playwright Test" [ref=e149] [cursor=pointer]:
+                      - /url: /docs/api/class-test
+                  - listitem [ref=e150]:
+                    - link "TestConfig" [ref=e151] [cursor=pointer]:
+                      - /url: /docs/api/class-testconfig
+                  - listitem [ref=e152]:
+                    - link "TestInfo" [ref=e153] [cursor=pointer]:
+                      - /url: /docs/api/class-testinfo
+                  - listitem [ref=e154]:
+                    - link "TestInfoError" [ref=e155] [cursor=pointer]:
+                      - /url: /docs/api/class-testinfoerror
+                  - listitem [ref=e156]:
+                    - link "TestOptions" [ref=e157] [cursor=pointer]:
+                      - /url: /docs/api/class-testoptions
+                  - listitem [ref=e158]:
+                    - link "TestProject" [ref=e159] [cursor=pointer]:
+                      - /url: /docs/api/class-testproject
+                  - listitem [ref=e160]:
+                    - link "TestStepInfo" [ref=e161] [cursor=pointer]:
+                      - /url: /docs/api/class-teststepinfo
+                  - listitem [ref=e162]:
+                    - link "WorkerInfo" [ref=e163] [cursor=pointer]:
+                      - /url: /docs/api/class-workerinfo
+              - listitem [ref=e164]:
+                - button "Test Reporter" [expanded] [ref=e166] [cursor=pointer]
+                - list [ref=e167]:
+                  - listitem [ref=e168]:
+                    - link "Reporter" [ref=e169] [cursor=pointer]:
+                      - /url: /docs/api/class-reporter
+                  - listitem [ref=e170]:
+                    - link "Suite" [ref=e171] [cursor=pointer]:
+                      - /url: /docs/api/class-suite
+                  - listitem [ref=e172]:
+                    - link "TestCase" [ref=e173] [cursor=pointer]:
+                      - /url: /docs/api/class-testcase
+                  - listitem [ref=e174]:
+                    - link "TestError" [ref=e175] [cursor=pointer]:
+                      - /url: /docs/api/class-testerror
+                  - listitem [ref=e176]:
+                    - link "TestResult" [ref=e177] [cursor=pointer]:
+                      - /url: /docs/api/class-testresult
+                  - listitem [ref=e178]:
+                    - link "TestStep" [ref=e179] [cursor=pointer]:
+                      - /url: /docs/api/class-teststep
+              - listitem [ref=e180]:
+                - button "Experimental" [expanded] [ref=e182] [cursor=pointer]
+                - list [ref=e183]:
+                  - listitem [ref=e184]:
+                    - link "Android" [ref=e185] [cursor=pointer]:
+                      - /url: /docs/api/class-android
+                  - listitem [ref=e186]:
+                    - link "AndroidDevice" [ref=e187] [cursor=pointer]:
+                      - /url: /docs/api/class-androiddevice
+                  - listitem [ref=e188]:
+                    - link "AndroidInput" [ref=e189] [cursor=pointer]:
+                      - /url: /docs/api/class-androidinput
+                  - listitem [ref=e190]:
+                    - link "AndroidSocket" [ref=e191] [cursor=pointer]:
+                      - /url: /docs/api/class-androidsocket
+                  - listitem [ref=e192]:
+                    - link "AndroidWebView" [ref=e193] [cursor=pointer]:
+                      - /url: /docs/api/class-androidwebview
+                  - listitem [ref=e194]:
+                    - link "Electron" [ref=e195] [cursor=pointer]:
+                      - /url: /docs/api/class-electron
+                  - listitem [ref=e196]:
+                    - link "ElectronApplication" [ref=e197] [cursor=pointer]:
+                      - /url: /docs/api/class-electronapplication
+    - main [ref=e198]:
+      - generic [ref=e200]:
+        - generic [ref=e202]:
+          - article [ref=e203]:
+            - navigation "Breadcrumbs" [ref=e204]:
+              - list [ref=e205]:
+                - listitem [ref=e206]:
+                  - link "Home page" [ref=e207] [cursor=pointer]:
+                    - /url: /
+                    - img [ref=e208]
+                - listitem [ref=e210]:
+                  - generic [ref=e211]: API reference
+                - listitem [ref=e212]:
+                  - generic [ref=e213]: Playwright Library
+            - generic [ref=e214]:
+              - heading "Playwright Library" [level=1] [ref=e216]
+              - paragraph [ref=e217]: "Playwright module provides a method to launch a browser instance. The following is a typical example of using Playwright to drive automation:"
+              - generic [ref=e219]:
+                - code [ref=e221]:
+                  - generic [ref=e222]: "const { chromium, firefox, webkit } = require('playwright');"
+                  - generic [ref=e223]: "(async () => {"
+                  - generic [ref=e224]: const browser = await chromium.launch(); // Or 'firefox' or 'webkit'.
+                  - generic [ref=e225]: const page = await browser.newPage();
+                  - generic [ref=e226]: await page.goto('http://example.com');
+                  - generic [ref=e227]: // other actions...
+                  - generic [ref=e228]: await browser.close();
+                  - generic [ref=e229]: "})();"
+                - button "Copy code to clipboard" [ref=e231] [cursor=pointer]:
+                  - generic [ref=e232]:
+                    - img [ref=e233]
+                    - img [ref=e235]
+              - separator [ref=e237]
+              - heading "PropertiesDirect link to Properties" [level=2] [ref=e238]:
+                - text: Properties
+                - link "Direct link to Properties" [ref=e239] [cursor=pointer]:
+                  - /url: "#properties"
+                  - text: "#"
+              - heading "chromiumDirect link to chromium" [level=3] [ref=e240]:
+                - text: chromium
+                - link "Direct link to chromium" [ref=e241] [cursor=pointer]:
+                  - /url: "#playwright-chromium"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e242]:
+                - text: This object can be used to launch or connect to Chromium, returning instances of
+                - link "Browser" [ref=e243] [cursor=pointer]:
+                  - /url: /docs/api/class-browser
+                - text: .
+              - paragraph [ref=e244]:
+                - strong [ref=e245]: Usage
+              - generic [ref=e247]:
+                - code [ref=e249]:
+                  - generic [ref=e250]: playwright.chromium
+                - button "Copy code to clipboard" [ref=e252] [cursor=pointer]:
+                  - generic [ref=e253]:
+                    - img [ref=e254]
+                    - img [ref=e256]
+              - paragraph [ref=e258]:
+                - strong [ref=e259]: Type
+              - list [ref=e260]:
+                - listitem [ref=e261]:
+                  - link "BrowserType" [ref=e262] [cursor=pointer]:
+                    - /url: /docs/api/class-browsertype
+              - separator [ref=e263]
+              - heading "devicesDirect link to devices" [level=3] [ref=e264]:
+                - text: devices
+                - link "Direct link to devices" [ref=e265] [cursor=pointer]:
+                  - /url: "#playwright-devices"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e266]:
+                - text: Returns a dictionary of devices to be used with
+                - link "browser.newContext()" [ref=e267] [cursor=pointer]:
+                  - /url: /docs/api/class-browser#browser-new-context
+                - text: or
+                - link "browser.newPage()" [ref=e268] [cursor=pointer]:
+                  - /url: /docs/api/class-browser#browser-new-page
+                - text: .
+              - generic [ref=e270]:
+                - code [ref=e272]:
+                  - generic [ref=e273]: "const { webkit, devices } = require('playwright');"
+                  - generic [ref=e274]: const iPhone = devices['iPhone 6'];
+                  - generic [ref=e275]: "(async () => {"
+                  - generic [ref=e276]: const browser = await webkit.launch();
+                  - generic [ref=e277]: "const context = await browser.newContext({"
+                  - generic [ref=e278]: ...iPhone
+                  - generic [ref=e279]: "});"
+                  - generic [ref=e280]: const page = await context.newPage();
+                  - generic [ref=e281]: await page.goto('http://example.com');
+                  - generic [ref=e282]: // other actions...
+                  - generic [ref=e283]: await browser.close();
+                  - generic [ref=e284]: "})();"
+                - button "Copy code to clipboard" [ref=e286] [cursor=pointer]:
+                  - generic [ref=e287]:
+                    - img [ref=e288]
+                    - img [ref=e290]
+              - paragraph [ref=e292]:
+                - strong [ref=e293]: Usage
+              - generic [ref=e295]:
+                - code [ref=e297]:
+                  - generic [ref=e298]: playwright.devices
+                - button "Copy code to clipboard" [ref=e300] [cursor=pointer]:
+                  - generic [ref=e301]:
+                    - img [ref=e302]
+                    - img [ref=e304]
+              - paragraph [ref=e306]:
+                - strong [ref=e307]: Type
+              - list [ref=e308]:
+                - listitem [ref=e309]:
+                  - link "Object" [ref=e310] [cursor=pointer]:
+                    - /url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+              - separator [ref=e311]
+              - heading "errorsDirect link to errors" [level=3] [ref=e312]:
+                - text: errors
+                - link "Direct link to errors" [ref=e313] [cursor=pointer]:
+                  - /url: "#playwright-errors"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e314]:
+                - text: Playwright methods might throw errors if they are unable to fulfill a request. For example,
+                - link "locator.waitFor()" [ref=e315] [cursor=pointer]:
+                  - /url: /docs/api/class-locator#locator-wait-for
+                - text: might fail if the selector doesn't match any nodes during the given timeframe.
+              - paragraph [ref=e316]:
+                - text: For certain types of errors Playwright uses specific error classes. These classes are available via
+                - link "playwright.errors" [ref=e317] [cursor=pointer]:
+                  - /url: "#playwright-errors"
+                  - code [ref=e318]: playwright.errors
+                - text: .
+              - paragraph [ref=e319]: "An example of handling a timeout error:"
+              - generic [ref=e321]:
+                - code [ref=e323]:
+                  - generic [ref=e324]: "try {"
+                  - generic [ref=e325]: await page.locator('.foo').waitFor();
+                  - generic [ref=e326]: "} catch (e) {"
+                  - generic [ref=e327]: "if (e instanceof playwright.errors.TimeoutError) {"
+                  - generic [ref=e328]: // Do something if this is a timeout.
+                  - generic [ref=e329]: "}"
+                  - generic [ref=e330]: "}"
+                - button "Copy code to clipboard" [ref=e332] [cursor=pointer]:
+                  - generic [ref=e333]:
+                    - img [ref=e334]
+                    - img [ref=e336]
+              - paragraph [ref=e338]:
+                - strong [ref=e339]: Usage
+              - generic [ref=e341]:
+                - code [ref=e343]:
+                  - generic [ref=e344]: playwright.errors
+                - button "Copy code to clipboard" [ref=e346] [cursor=pointer]:
+                  - generic [ref=e347]:
+                    - img [ref=e348]
+                    - img [ref=e350]
+              - paragraph [ref=e352]:
+                - strong [ref=e353]: Type
+              - list [ref=e354]:
+                - listitem [ref=e355]:
+                  - link "Object" [ref=e356] [cursor=pointer]:
+                    - /url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+                  - list [ref=e357]:
+                    - listitem [ref=e358]:
+                      - paragraph [ref=e359]:
+                        - code [ref=e360]: TimeoutError
+                        - link "function" [ref=e361] [cursor=pointer]:
+                          - /url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+                      - paragraph [ref=e362]:
+                        - text: A class of
+                        - link "TimeoutError" [ref=e363] [cursor=pointer]:
+                          - /url: /docs/api/class-timeouterror
+                        - text: .
+              - separator [ref=e364]
+              - heading "firefoxDirect link to firefox" [level=3] [ref=e365]:
+                - text: firefox
+                - link "Direct link to firefox" [ref=e366] [cursor=pointer]:
+                  - /url: "#playwright-firefox"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e367]:
+                - text: This object can be used to launch or connect to Firefox, returning instances of
+                - link "Browser" [ref=e368] [cursor=pointer]:
+                  - /url: /docs/api/class-browser
+                - text: .
+              - paragraph [ref=e369]:
+                - strong [ref=e370]: Usage
+              - generic [ref=e372]:
+                - code [ref=e374]:
+                  - generic [ref=e375]: playwright.firefox
+                - button "Copy code to clipboard" [ref=e377] [cursor=pointer]:
+                  - generic [ref=e378]:
+                    - img [ref=e379]
+                    - img [ref=e381]
+              - paragraph [ref=e383]:
+                - strong [ref=e384]: Type
+              - list [ref=e385]:
+                - listitem [ref=e386]:
+                  - link "BrowserType" [ref=e387] [cursor=pointer]:
+                    - /url: /docs/api/class-browsertype
+              - separator [ref=e388]
+              - heading "requestDirect link to request" [level=3] [ref=e389]:
+                - text: request
+                - link "Direct link to request" [ref=e390] [cursor=pointer]:
+                  - /url: "#playwright-request"
+                  - text: "#"
+              - text: "Added in: v1.16"
+              - paragraph [ref=e391]: Exposes API that can be used for the Web API testing.
+              - paragraph [ref=e392]:
+                - strong [ref=e393]: Usage
+              - generic [ref=e395]:
+                - code [ref=e397]:
+                  - generic [ref=e398]: playwright.request
+                - button "Copy code to clipboard" [ref=e400] [cursor=pointer]:
+                  - generic [ref=e401]:
+                    - img [ref=e402]
+                    - img [ref=e404]
+              - paragraph [ref=e406]:
+                - strong [ref=e407]: Type
+              - list [ref=e408]:
+                - listitem [ref=e409]:
+                  - link "APIRequest" [ref=e410] [cursor=pointer]:
+                    - /url: /docs/api/class-apirequest
+              - separator [ref=e411]
+              - heading "selectorsDirect link to selectors" [level=3] [ref=e412]:
+                - text: selectors
+                - link "Direct link to selectors" [ref=e413] [cursor=pointer]:
+                  - /url: "#playwright-selectors"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e414]:
+                - text: Selectors can be used to install custom selector engines. See
+                - link "extensibility" [ref=e415] [cursor=pointer]:
+                  - /url: /docs/extensibility
+                - text: for more information.
+              - paragraph [ref=e416]:
+                - strong [ref=e417]: Usage
+              - generic [ref=e419]:
+                - code [ref=e421]:
+                  - generic [ref=e422]: playwright.selectors
+                - button "Copy code to clipboard" [ref=e424] [cursor=pointer]:
+                  - generic [ref=e425]:
+                    - img [ref=e426]
+                    - img [ref=e428]
+              - paragraph [ref=e430]:
+                - strong [ref=e431]: Type
+              - list [ref=e432]:
+                - listitem [ref=e433]:
+                  - link "Selectors" [ref=e434] [cursor=pointer]:
+                    - /url: /docs/api/class-selectors
+              - separator [ref=e435]
+              - heading "webkitDirect link to webkit" [level=3] [ref=e436]:
+                - text: webkit
+                - link "Direct link to webkit" [ref=e437] [cursor=pointer]:
+                  - /url: "#playwright-webkit"
+                  - text: "#"
+              - text: Added before v1.9
+              - paragraph [ref=e438]:
+                - text: This object can be used to launch or connect to WebKit, returning instances of
+                - link "Browser" [ref=e439] [cursor=pointer]:
+                  - /url: /docs/api/class-browser
+                - text: .
+              - paragraph [ref=e440]:
+                - strong [ref=e441]: Usage
+              - generic [ref=e443]:
+                - code [ref=e445]:
+                  - generic [ref=e446]: playwright.webkit
+                - button "Copy code to clipboard" [ref=e448] [cursor=pointer]:
+                  - generic [ref=e449]:
+                    - img [ref=e450]
+                    - img [ref=e452]
+              - paragraph [ref=e454]:
+                - strong [ref=e455]: Type
+              - list [ref=e456]:
+                - listitem [ref=e457]:
+                  - link "BrowserType" [ref=e458] [cursor=pointer]:
+                    - /url: /docs/api/class-browsertype
+          - navigation "Docs pages" [ref=e459]:
+            - link "Previous « Playwright Test" [ref=e460] [cursor=pointer]:
+              - /url: /docs/api/class-test
+              - generic [ref=e461]: Previous
+              - generic [ref=e462]: « Playwright Test
+            - link "Next APIRequest »" [ref=e463] [cursor=pointer]:
+              - /url: /docs/api/class-apirequest
+              - generic [ref=e464]: Next
+              - generic [ref=e465]: APIRequest »
+        - list [ref=e468]:
+          - listitem [ref=e469]:
+            - link "Properties" [ref=e470] [cursor=pointer]:
+              - /url: "#properties"
+            - list [ref=e471]:
+              - listitem [ref=e472]:
+                - link "chromium" [ref=e473] [cursor=pointer]:
+                  - /url: "#playwright-chromium"
+              - listitem [ref=e474]:
+                - link "devices" [ref=e475] [cursor=pointer]:
+                  - /url: "#playwright-devices"
+              - listitem [ref=e476]:
+                - link "errors" [ref=e477] [cursor=pointer]:
+                  - /url: "#playwright-errors"
+              - listitem [ref=e478]:
+                - link "firefox" [ref=e479] [cursor=pointer]:
+                  - /url: "#playwright-firefox"
+              - listitem [ref=e480]:
+                - link "request" [ref=e481] [cursor=pointer]:
+                  - /url: "#playwright-request"
+              - listitem [ref=e482]:
+                - link "selectors" [ref=e483] [cursor=pointer]:
+                  - /url: "#playwright-selectors"
+              - listitem [ref=e484]:
+                - link "webkit" [ref=e485] [cursor=pointer]:
+                  - /url: "#playwright-webkit"
+  - contentinfo [ref=e486]:
+    - generic [ref=e487]:
+      - generic [ref=e488]:
+        - generic [ref=e489]:
+          - generic [ref=e490]: Learn
+          - list [ref=e491]:
+            - listitem [ref=e492]:
+              - link "Getting started" [ref=e493] [cursor=pointer]:
+                - /url: /docs/intro
+            - listitem [ref=e494]:
+              - link "Playwright Training" [ref=e495] [cursor=pointer]:
+                - /url: https://learn.microsoft.com/en-us/training/modules/build-with-playwright/
+                - text: Playwright Training
+                - img [ref=e496]
+            - listitem [ref=e498]:
+              - link "Learn Videos" [ref=e499] [cursor=pointer]:
+                - /url: /community/learn-videos
+            - listitem [ref=e500]:
+              - link "Feature Videos" [ref=e501] [cursor=pointer]:
+                - /url: /community/feature-videos
+        - generic [ref=e502]:
+          - generic [ref=e503]: Community
+          - list [ref=e504]:
+            - listitem [ref=e505]:
+              - link "Stack Overflow" [ref=e506] [cursor=pointer]:
+                - /url: https://stackoverflow.com/questions/tagged/playwright
+                - text: Stack Overflow
+                - img [ref=e507]
+            - listitem [ref=e509]:
+              - link "Discord" [ref=e510] [cursor=pointer]:
+                - /url: https://aka.ms/playwright/discord
+                - text: Discord
+                - img [ref=e511]
+            - listitem [ref=e513]:
+              - link "Twitter" [ref=e514] [cursor=pointer]:
+                - /url: https://twitter.com/playwrightweb
+                - text: Twitter
+                - img [ref=e515]
+            - listitem [ref=e517]:
+              - link "LinkedIn" [ref=e518] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/playwrightweb
+                - text: LinkedIn
+                - img [ref=e519]
+        - generic [ref=e521]:
+          - generic [ref=e522]: More
+          - list [ref=e523]:
+            - listitem [ref=e524]:
+              - link "GitHub" [ref=e525] [cursor=pointer]:
+                - /url: https://github.com/microsoft/playwright
+                - text: GitHub
+                - img [ref=e526]
+            - listitem [ref=e528]:
+              - link "YouTube" [ref=e529] [cursor=pointer]:
+                - /url: https://www.youtube.com/channel/UC46Zj8pDH5tDosqm1gd7WTg
+                - text: YouTube
+                - img [ref=e530]
+            - listitem [ref=e532]:
+              - link "Blog" [ref=e533] [cursor=pointer]:
+                - /url: https://dev.to/playwright
+                - text: Blog
+                - img [ref=e534]
+            - listitem [ref=e536]:
+              - link "Ambassadors" [ref=e537] [cursor=pointer]:
+                - /url: /community/ambassadors
+            - listitem [ref=e538]:
+              - link "Microsoft Privacy Statement" [ref=e539] [cursor=pointer]:
+                - /url: https://go.microsoft.com/fwlink/?LinkId=521839
+                - text: Microsoft Privacy Statement
+                - img [ref=e540]
+      - generic [ref=e543]: Copyright © 2026 Microsoft
