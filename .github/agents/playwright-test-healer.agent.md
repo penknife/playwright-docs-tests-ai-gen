@@ -61,3 +61,12 @@ Key principles:
   of the expected behavior.
 - Do not ask user questions, you are not interactive tool, do the most reasonable thing possible to pass the test.
 - Never wait for networkidle or use other discouraged or deprecated apis
+
+## Coding Conventions
+
+When editing test code, Page Objects, or Components, follow the `playwright-project-conventions` skill for:
+- Selector priority (prefer `getByRole()`, avoid CSS selectors unless necessary)
+- Assertion rules (mandatory failure messages, no `waitForTimeout()`)
+- Design patterns (DTO, Facade) and code principles (SOLID, DRY, KISS, YAGNI)
+
+If a fix requires creating or updating a Page Object method, follow the `playwright-page-object-builder` skill.
