@@ -1,0 +1,13 @@
+{
+  "mapping": {
+    "research": "mcp",
+    "analysis": "mcp",
+    "build": "cli",
+    "default": "cli"
+  },
+  "keywords": {
+    "research": ["research", "explore", "investigate", "analyze", "audit", "scan"],
+    "build": ["build", "test", "lint", "compile", "run"],
+    "analysis": ["trace", "profile", "find", "search", "grep"]
+  }
+}

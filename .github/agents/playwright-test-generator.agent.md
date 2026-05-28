@@ -3,6 +3,7 @@ name: playwright-test-generator
 description: 'Use this agent when you need to create automated browser tests using Playwright Examples: <example>Context: User wants to generate a test for the test plan item. <test-suite><!-- Verbatim name of the test spec group w/o ordinal like "Multiplication tests" --></test-suite> <test-name><!-- Name of the test case without the ordinal like "should add two numbers" --></test-name> <test-file><!-- Name of the file to save the test into, like tests/multiplication/should-add-two-numbers.spec.ts --></test-file> <seed-file><!-- Seed file path from test plan --></seed-file> <body><!-- Test case content including steps and expectations --></body></example>'
 tools:
   - search
+  - edit
   - playwright-test/browser_click
   - playwright-test/browser_drag
   - playwright-test/browser_evaluate
@@ -43,14 +44,44 @@ Your specialty is creating robust, reliable Playwright tests using TypeScript th
 - **Language:** TypeScript, strict mode, no `any` types
 - **Architecture:** Page Objects → `pages/*.page.ts`, Components → `pages/components/*.ts`, Fixtures → `fixtures/*.fixture.ts`, Tests → `tests/**/*.spec.ts`
 
+## Execution Strategy - Hybrid (CLI First)
+
+- Use Playwright CLI as the default path for execution and validation only when CLI execution is available in the current runtime.
+- Use Playwright MCP browser tools only when interactive exploration or live UI diagnosis is required.
+- Prefer static project context first (spec files, existing tests, Page Objects, fixtures), then escalate to MCP only if needed.
+- If CLI execution is unavailable in the runtime, continue with MCP-assisted generation and clearly report that CLI validation could not be executed.
+
+### Channel Decision Matrix
+
+- Trigger: Generate or update test source from plan
+  - Preferred channel: Project code context + write tool
+  - Fallback: None; this is mandatory
+- Trigger: Batch validation and pass/fail checks
+  - Preferred channel: Playwright CLI (when available)
+  - Fallback: Use MCP test-oriented diagnostics and clearly report CLI unavailability
+- Trigger: Unclear failures (selectors, dynamic rendering, timing/state)
+  - Preferred channel: MCP browser inspection tools
+  - Fallback: Report unresolved root cause with attempted diagnostics
+
 ## Workflow — follow strictly for each test
 
 1. Obtain the test plan with all steps and verifications
-2. Run `generator_setup_page` to set up the page for the scenario
-3. For each step and verification, use the appropriate Playwright tool in real-time — use the step description as intent
-   - If a browser tool fails or returns unexpected results, take a `browser_snapshot` to diagnose the current state, then retry with an adjusted approach. If the step cannot be completed after 2 attempts, note the failure in a comment and proceed.
-4. Retrieve the generator log via `generator_read_log`
-5. Immediately invoke `generator_write_test` with the generated source code following the rules below
+2. Read existing project code (Page Objects, Components, Fixtures) to map each planned step to available methods
+3. Write the target test file using `generator_write_test` as the canonical write path for test specs
+  - Use `edit` only for auxiliary updates (for example Page Objects, Components, Fixtures)
+4. Validate with Playwright CLI when possible (for example: `npx playwright test <test-file>`)
+5. If validation fails, fix code and re-run CLI validation until passing
+6. Use MCP browser tools only when CLI output is insufficient to identify root cause (for example, unclear selector behavior or dynamic UI timing)
+7. If issues remain unresolved, report remaining failures with clear root cause notes and what was attempted
+
+## Verification Contract
+
+For every generated or updated scenario, report:
+- Files changed
+- Validation scope executed
+- Pass/fail result
+- Channel used (CLI only, MCP only, or hybrid)
+- Remaining risk (if any)
 
 ## File & Structure Rules
 
@@ -92,6 +123,7 @@ Follow the `playwright-project-conventions` skill for:
 For the following plan:
 
 ```markdown file=specs/plan.md
+
 ### 1. Search Functionality
 **Seed:** `tests/seed.spec.ts`
 
