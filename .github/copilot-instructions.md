@@ -16,6 +16,12 @@ Always follow this strict sequence — never skip steps:
 2. 🎭 Generator → transforms spec into `tests/**/*.spec.ts`
 3. 🎭 Healer → fixes failing tests automatically
 
+### Orchestration
+To run all three agents automatically in a single turn, use the **playwright-pipeline** orchestrator agent
+(or the `run-pipeline` prompt). It delegates to the Planner, Generator (once per test item), and Healer
+sequentially — the same MCP browser session is shared, so do not fan out in parallel. Calling the three
+agents one-by-one manually is still supported.
+
 ## Architecture
 - Page Objects → `pages/*.page.ts`
 - Tests → `tests/**/*.spec.ts`
